@@ -8,18 +8,18 @@ from explored import Explored
 
 
 def graph_search(problem, verbose=False, debug=False):
-    """graph_search(problem, verbose, debug) - Given a problem representation
-    (instance of basicsearch_lib02.representation.Problem or derived class),
-    attempt to solve the problem.
-    
-    If debug is True, debugging information will be displayed.
-    
-    if verbose is True, the following information will be displayed:
-        
-        Number of moves to solution
-        List of moves and resulting puzzle states
-        Example:
-        
+      """graph_search(problem, verbose, debug) - Given a problem representation
+      (instance of basicsearch_lib02.representation.Problem or derived class),
+      attempt to solve the problem.
+      
+      If debug is True, debugging information will be displayed.
+      
+      if verbose is True, the following information will be displayed:
+      
+      Number of moves to solution
+      List of moves and resulting puzzle states
+      Example:
+      
             Solution in 25 moves        
             Initial state
                   0        1        2    
@@ -58,15 +58,40 @@ def graph_search(problem, verbose=False, debug=False):
             0     1        2        3    
             1     4        .        5    
             2     6        7        8    
-        
-        If no solution were found (not possible with the puzzles we
-        are using), we would display:
-        
-            No solution found
-    
-    Returns a tuple (path, nodes_explored) where:
-    path - list of actions to solve the problem or None if no solution was found
-    nodes_explored - Number of nodes explored (dequeued from frontier)
-    """
+      
+      If no solution were found (not possible with the puzzles we
+      are using), we would display:
+      
+      No solution found
 
-    raise NotImplemented
+      Returns a tuple (path, nodes_explored) where:
+      path - list of actions to solve the problem or None if no solution was found
+      nodes_explored - Number of nodes explored (dequeued from frontier)
+      """
+      frontier_node = Node(problem, problem.puzzle.state_tuple())
+      frontier_list = PriorityQueue()
+      frontier_list.append(frontier_node)
+
+      done = found = False
+      explored = Explored()
+      #while not done:
+            
+
+      """
+      frontier = problem.initial_state()
+      done = found = False
+      explored = {} # keep track of nodes we have checked
+      while not done
+      node = frontier.get_node() # remove state
+      explored = union(explored, node)
+      if node in problem.goals()
+      found = done = True
+      else
+      # only add novel results from the current node
+      nodes = setdiff(results from actions(node), union(frontier,explored))
+      frontier.add_nodes(nodes)
+      done = frontier.is_empty()
+      return solution if found else return failure
+      """
+
+    #raise NotImplemented
