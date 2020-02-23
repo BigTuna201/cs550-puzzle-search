@@ -68,14 +68,25 @@ def graph_search(problem, verbose=False, debug=False):
       path - list of actions to solve the problem or None if no solution was found
       nodes_explored - Number of nodes explored (dequeued from frontier)
       """
-      frontier_node = Node(problem, problem.puzzle.state_tuple())
-      frontier_list = PriorityQueue()
-      frontier_list.append(frontier_node)
+      initial_node = Node(problem, problem.puzzle.state_tuple())
+      frontier = PriorityQueue()
+      frontier.append(initial_node)
 
       done = found = False
       explored = Explored()
-      #while not done:
-            
+      while not done:
+            node = frontier.pop()
+            explored.add(node)
+            if goal_test(node.state):
+                  found = done = True
+            else:
+                  for act in problem.actions(node.state):
+                        if not frontier.__contains__(act) and not explored.exists(act):
+                              # Need to change the puzzle state here
+                              frontier.append(Node(problem, problem.puzzle.state_tuple(), node, act))
+
+
+                              
 
       """
       frontier = problem.initial_state()
