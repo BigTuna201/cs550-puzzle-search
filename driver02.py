@@ -38,8 +38,8 @@ class Timer:
 
 
 def driver():
-    ntrials = 1
-    n = 8
+    ntrials = 10
+    n = 3
 
     btime, dtime, atime = [], [], []
     bnodes, dnodes, anodes = [], [], []
@@ -67,22 +67,36 @@ def driver():
         anodes.append(asearch[1])
         atime.append(at.elapsed_s())
 
-    bmean_steps, bmean_nodes, bmean_time = mean(bsteps), mean(bnodes), mean(btime)
-    bstd_steps, bstd_nodes, bstd_time = stdev(bsteps, bmean_steps), stdev(bnodes, bmean_nodes), stdev(btime, bmean_time)
-    
-    dmean_steps, dmean_nodes, dmean_time = mean(dsteps), mean(dnodes), mean(dtime)
-    dstd_steps, dstd_nodes, dstd_time = stdev(dsteps, dmean_steps), stdev(dnodes, dmean_nodes), stdev(dtime, dmean_time)
-    
-    amean_steps, amean_nodes, amean_time = mean(asteps), mean(anodes), mean(atime)
-    astd_steps, astd_nodes, astd_time = stdev(asteps, amean_steps), stdev(anodes, amean_nodes), stdev(atime, amean_time)
-    
-    print("Breadth Search", "Depth Search", "A* Search")
-    print("Mean Steps", bmean_steps, dmean_steps, amean_steps)
-    print("St Dev Steps %.4f %.4f %.4f" % (round(bstd_steps,4), round(dstd_steps,4), round(astd_steps,4)))
-    print("Mean Nodes", bmean_nodes, dmean_nodes, amean_nodes)
-    print("St Dev Nodes %.4f %.4f %.4f" % (round(bstd_nodes,4), round(dstd_nodes,4), round(astd_nodes,4)))
-    print("Mean Time %.4f %.4f %.4f" % (round(bmean_time,4), round(dmean_time,4), round(amean_time,4)))
-    print("St Dev Time %.4f %.4f %.4f" % (round(bstd_time,4), round(dstd_time,4), round(astd_time,4)))
+    bdata, ddata, adata = [], [], []
+
+    bdata.append(mean(bsteps)), bdata.append(stdev(bsteps, bdata[0]))
+    bdata.append(mean(bnodes)), bdata.append(stdev(bnodes, bdata[2]))
+    bdata.append(mean(btime)), bdata.append(stdev(btime, bdata[4]))
+
+    ddata.append(mean(dsteps)), ddata.append(stdev(dsteps, ddata[0]))
+    ddata.append(mean(dnodes)), ddata.append(stdev(dnodes, ddata[2]))
+    ddata.append(mean(dtime)), ddata.append(stdev(dtime, ddata[4]))
+
+    adata.append(mean(asteps)), adata.append(stdev(asteps, adata[0]))
+    adata.append(mean(anodes)), adata.append(stdev(anodes, adata[2]))
+    adata.append(mean(atime)), adata.append(stdev(atime, adata[4]))
+
+    bdata = [round(elem, 4) for elem in bdata]
+    ddata = [round(elem, 4) for elem in ddata]
+    adata = [round(elem, 4) for elem in adata]
+
+    data = [bdata, ddata, adata]
+    searches = ["Breadth Search", "Depth Search", "A* Search"]
+    stats = ["Mean Steps", "Std Steps",
+             "Mean Nodes", "Std Nodes",
+             "Mean Time", "Std Time"]
+
+    ctr = 0
+    row_format = ("{:>15}" * (len(stats) + 1))
+    print(row_format.format("", *stats))
+    for stat, row in zip(stats, data):
+        print(row_format.format(searches[ctr], *row))
+        ctr += 1
 
 
 if __name__ == '__main__':
