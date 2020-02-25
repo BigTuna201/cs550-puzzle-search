@@ -99,3 +99,4 @@ class PriorityQueue(Queue):
         for i, (value, item) in enumerate(self.A):
             if item == key:
                 self.A.pop(i)
+

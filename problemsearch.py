@@ -74,8 +74,7 @@ def graph_search(problem, verbose=False, debug=False):
 
     done = found = False
     explored = Explored()
-    if verbose:
-        print(problem.puzzle)
+
     while not done:
         node = frontier.pop()
         state = node.state
@@ -89,8 +88,15 @@ def graph_search(problem, verbose=False, debug=False):
                 if next_state not in frontier and not explored.exists(next_state):
                     # Need to change the puzzle state here
                     frontier.append(node.child_node(act))
+                    # done = frontier.is_empty()
 
-    return node
+    if not found:
+        print("No solution found.")
+    else:
+        if verbose:
+            # Show all actions
+            print("Verbose")
+        return node
 
     """
       frontier = problem.initial_state()
