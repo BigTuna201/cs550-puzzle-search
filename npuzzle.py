@@ -67,7 +67,6 @@ class NPuzzle(Problem):
                 offset[dim] = 1
                 actions.append(list(offset))
 
-        print(actions)
         return actions
 
     def result(self, state, action):
@@ -75,11 +74,12 @@ class NPuzzle(Problem):
         n = self.puzzle.get_rows()
         state_list = [list(state[i:i + n]) for i in range(0, len(state), n)]
 
+        r = c = 0
         found = False
         for x in range(len(state_list)):
             for y in range(len(state_list[x])):
                 if state_list[x][y] is None:
-                    (r, c) = [x, y]
+                    r, c = x, y
                     found = True
                     break
             if found:
@@ -91,19 +91,20 @@ class NPuzzle(Problem):
         rprime = r + delta_r
         cprime = c + delta_c
         if rprime < 0 or cprime < 0 or \
-                rprime >= self.puzzle.get_rows() or cprime >= self.puzzle.get_cols():
+                rprime >= n or cprime >= n:
             raise ValueError("Illegal move (%d,%d) from (%d,%d)" % (
                 delta_r, delta_c, r, c))
+        print("rprime: ", rprime, "r:", r, "cprime:", cprime, "c", c)
 
         # Apply move offset accordingly
-        if r != 0:
+        if delta_r != 0:
             # Move up or down
-            state_list[r][c] = state_list[r + delta_r][c]
-            state_list[r + delta_r][c] = None
-        elif c != 0:
+            state_list[r][c] = state_list[rprime][c]
+            state_list[rprime][c] = None
+        elif delta_c != 0:
             # Move left or right
-            state_list[r][c] = state_list[r][c + delta_c]
-            state_list[r][c + delta_c] = None
+            state_list[r][c] = state_list[r][cprime]
+            state_list[r][cprime] = None
 
         new_state = [item for sublist in state_list
                      for item in sublist]
@@ -112,9 +113,9 @@ class NPuzzle(Problem):
 
     def goal_test(self, state):
         """goal_test(state) - Is state a goal?"""
-
         goal = state in self.puzzle.goals
         return goal
 
     def value(self, state):
+
         pass

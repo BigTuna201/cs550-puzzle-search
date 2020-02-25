@@ -67,9 +67,7 @@ class BreadthFirst:
 
     @classmethod
     def h(cls, state):
-        hval = 0
-        # TODO
-        return hval
+        return 0
 
 
 class DepthFirst:
@@ -81,9 +79,7 @@ class DepthFirst:
 
     @classmethod
     def h(cls, state):
-        hval = 0
-        # TODO
-        return hval
+        return 0
 
 
 class Manhattan:

@@ -84,13 +84,17 @@ def graph_search(problem, verbose=False, debug=False):
         if problem.goal_test(state):
             found = done = True
         else:
+            print("State:", state)
+            print("Actions:", problem.actions(state))
             for act in problem.actions(state):
-                next_node = problem.result(state, act)
-                if next_node not in frontier and not explored.exists(next_node):
+                next_state = problem.result(state, act)
+                print("Next state:", next_state, "Action:", act)
+                if next_state not in frontier and not explored.exists(next_state):
                     # Need to change the puzzle state here
                     frontier.append(node.child_node(act))
-                    print(act, node)
-
+                    print("Adding", act, node)
+                else:
+                    print("Not adding:", act, node)
 
     """
       frontier = problem.initial_state()
