@@ -66,6 +66,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="542" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582674770616">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="542" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1582674770616" />
     <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1582588937652">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -74,26 +78,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1582485449353" />
-    <state width="1515" height="209" key="GridCell.Tab.0.bottom" timestamp="1582674431941">
+    <state width="1515" height="209" key="GridCell.Tab.0.bottom" timestamp="1582675039424">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="209" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582674431941" />
-    <state width="1515" height="209" key="GridCell.Tab.0.center" timestamp="1582674431941">
+    <state width="1515" height="209" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582675039424" />
+    <state width="1515" height="209" key="GridCell.Tab.0.center" timestamp="1582675039424">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="209" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582674431941" />
-    <state width="1515" height="209" key="GridCell.Tab.0.left" timestamp="1582674431941">
+    <state width="1515" height="209" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582675039424" />
+    <state width="1515" height="209" key="GridCell.Tab.0.left" timestamp="1582675039424">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="209" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582674431941" />
-    <state width="1515" height="209" key="GridCell.Tab.0.right" timestamp="1582674431941">
+    <state width="1515" height="209" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582675039424" />
+    <state width="1515" height="209" key="GridCell.Tab.0.right" timestamp="1582675039424">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="209" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582674431941" />
+    <state width="1515" height="209" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582675039424" />
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582593199692">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1582593199692" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1582674883500">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1582674883500" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

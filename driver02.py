@@ -38,7 +38,7 @@ class Timer:
 
 
 def driver():
-    ntrials = 10
+    ntrials = 50
     n = 3
 
     btime, dtime, atime = [], [], []
@@ -69,34 +69,32 @@ def driver():
 
     bdata, ddata, adata = [], [], []
 
-    bdata.append(mean(bsteps)), bdata.append(stdev(bsteps, bdata[0]))
-    bdata.append(mean(bnodes)), bdata.append(stdev(bnodes, bdata[2]))
-    bdata.append(mean(btime)), bdata.append(stdev(btime, bdata[4]))
+    bdata = [mean(bsteps), stdev(bsteps, mean(bsteps)),
+             mean(bnodes), stdev(bnodes, mean(bnodes)),
+             mean(btime), stdev(btime, mean(btime))]
 
-    ddata.append(mean(dsteps)), ddata.append(stdev(dsteps, ddata[0]))
-    ddata.append(mean(dnodes)), ddata.append(stdev(dnodes, ddata[2]))
-    ddata.append(mean(dtime)), ddata.append(stdev(dtime, ddata[4]))
+    ddata = [mean(dsteps), stdev(dsteps, mean(dsteps)),
+             mean(dnodes), stdev(dnodes, mean(dnodes)),
+             mean(dtime), stdev(dtime, mean(dtime))]
 
-    adata.append(mean(asteps)), adata.append(stdev(asteps, adata[0]))
-    adata.append(mean(anodes)), adata.append(stdev(anodes, adata[2]))
-    adata.append(mean(atime)), adata.append(stdev(atime, adata[4]))
-
-    bdata = [round(elem, 4) for elem in bdata]
-    ddata = [round(elem, 4) for elem in ddata]
-    adata = [round(elem, 4) for elem in adata]
+    adata = [mean(asteps), stdev(asteps, mean(asteps)),
+             mean(anodes), stdev(anodes, mean(anodes)),
+             mean(atime), stdev(atime, mean(atime))]
 
     data = [bdata, ddata, adata]
+    data = [[round(elem, 6) for elem in lis] for lis in data]
+
     searches = ["Breadth Search", "Depth Search", "A* Search"]
     stats = ["Mean Steps", "Std Steps",
              "Mean Nodes", "Std Nodes",
              "Mean Time", "Std Time"]
 
-    ctr = 0
-    row_format = ("{:>15}" * (len(stats) + 1))
+    i = 0
+    row_format = ("{:>14}" * (len(stats) + 1))
     print(row_format.format("", *stats))
     for stat, row in zip(stats, data):
-        print(row_format.format(searches[ctr], *row))
-        ctr += 1
+        print(row_format.format(searches[i], *row))
+        i += 1
 
 
 if __name__ == '__main__':
