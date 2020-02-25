@@ -69,6 +69,7 @@ def graph_search(problem, verbose=False, debug=False):
       nodes_explored - Number of nodes explored (dequeued from frontier)
       """
     initial_node = Node(problem, problem.puzzle.state_tuple())
+    nodes_explored = 0
     frontier = PriorityQueue()
     frontier.append(initial_node)
 
@@ -79,7 +80,7 @@ def graph_search(problem, verbose=False, debug=False):
         node = frontier.pop()
         state = node.state
         explored.add(state)
-        print(node)
+        nodes_explored += 1
         if problem.goal_test(state):
             found = done = True
         else:
@@ -94,9 +95,15 @@ def graph_search(problem, verbose=False, debug=False):
         print("No solution found.")
     else:
         if verbose:
-            # Show all actions
-            print("Verbose")
-        return node
+            print("Solution in",len(node.solution()),"moves")
+            print(problem.puzzle)
+            for i,act in enumerate(node.solution()):
+                  problem.puzzle = problem.puzzle.move(act)
+                  act.reverse()
+                  print("Move",i+1,"-",act)
+                  print(problem.puzzle)
+
+        return (node.solution(), nodes_explored)
 
     """
       frontier = problem.initial_state()

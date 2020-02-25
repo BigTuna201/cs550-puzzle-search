@@ -74,11 +74,11 @@ class DepthFirst:
     """DepthFirst - depth first search"""
 
     @classmethod
-    def g(cls, parentnode, action, childnode):
-        return 1 + parentnode.get_g()
+    def h(cls, parentnode, action, childnode):
+        return -1*(parentnode.get_h() + 1)
 
     @classmethod
-    def h(cls, state):
+    def g(cls, state):
         return 0
 
 

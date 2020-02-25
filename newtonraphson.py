@@ -36,13 +36,47 @@ def NewtonRaphson(fpoly, a, tolerance=.00001):
     This is an iterative method that stops when the     
     change in estimators is less than tolerance.
 """
-    b = a - polyval(fpoly, a) / polyval(derivative(fpoly), a)
 
-    ctr = 0
-    while b != a:
-        original = polyval(fpoly, a-ctr)
-        deriv = polyval(derivative(fpoly), a-ctr)
+    # eps_step = 1e-5;
+    # eps_abs = 1e-5;
+    # N = 100;
+    # x = 0.2;
 
+    # for i=1:N
+    #     xn = x - cos(x)/( -sin(x) );
+
+    #     if abs( x - xn ) < eps_step && abs( cos( xn ) ) < eps_abs
+    #     break;
+    #     elseif i == N
+    #     error( 'Newton\'s method did not converge' );
+    #     end
+
+    #     x = xn;
+    # end
+
+    # xn
+    
+    original = polyval(fpoly, a)
+    deriv = polyval(derivative(fpoly), a)
+    
+    b = a - (original / deriv)
+    h = 0
+    for i in range(n):
+      original = polyval(fpoly, a + h)
+      deriv = polyval(derivative(fpoly), a + h)
+
+      xn = (a + h) - (original / deriv)
+
+      if abs(x - xn) < tolerance and abs()
+
+      new_b = (a + h) - (original / deriv)
+      diff = b - new_b
+      if abs(diff) < tolerance or a + h > N:
+          raise Exception("No root found")
+      b = new_b
+      print(h)
+      h += 1
+    return (a + h)
 
 # Auxillary Functions
 
@@ -60,6 +94,7 @@ def polyval(fpoly, x):
     for i, c in enumerate(fpoly, 1):
         val += c * x ** (len(fpoly) - i)
 
+    print(val)
     return val
 
 
@@ -76,4 +111,8 @@ def derivative(fpoly):
     """
     deriv = [c * (len(fpoly) - i) for i, c in enumerate(fpoly, 1)]
 
+    print(deriv[0:-1])
     return deriv[0:-1]
+
+if __name__ == '__main__':
+  print(NewtonRaphson([1, -1, 2], -20))

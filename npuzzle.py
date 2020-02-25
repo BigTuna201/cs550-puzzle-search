@@ -115,6 +115,6 @@ class NPuzzle(Problem):
         goal = state in self.puzzle.goals
         return goal
 
-    def value(self, state):
+    #def value(self, state):
 
-        pass
+     #   pass
