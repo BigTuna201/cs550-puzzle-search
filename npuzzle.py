@@ -18,10 +18,11 @@ class NPuzzle(Problem):
         The parent's class constructor is then called with the TileBoard
         instance and any remaining arguments captured in **kwargs.
         """
+
         # Instantiate Tileboard
         self.puzzle = TileBoard(n, force_state=force_state)
 
-        # Initialize parent class, Problem
+        # Initialize parent class
         super().__init__(self.puzzle.state_tuple(), self.puzzle.goals, kwargs["g"], kwargs["h"])
 
         # Note on **kwargs:

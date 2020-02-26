@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="460b97f6-dd15-4074-91f2-2e288325c406" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newtonraphson.py" beforeDir="false" afterPath="$PROJECT_DIR$/newtonraphson.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/driver02.py" beforeDir="false" afterPath="$PROJECT_DIR$/driver02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/npuzzle.py" beforeDir="false" afterPath="$PROJECT_DIR$/npuzzle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchstrategies.py" beforeDir="false" afterPath="$PROJECT_DIR$/searchstrategies.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

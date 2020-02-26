@@ -38,15 +38,25 @@ class Timer:
 
 
 def driver():
+    # Assign number of trials, size of tileboards, and set verbose / debug flags or force_state
     ntrials = 1
     n = 8
     verbose, debug = False, False
-    f_state = [1, 2, 3, 4, 5, 6, None, 7, 8]
+    # f_state = [1, 2, 3, 4, 5, 6, None, 7, 8]
+
+    # Initialize empty arrays to hold stat values
     btime, dtime, atime = [], [], []
     bnodes, dnodes, anodes = [], [], []
     bsteps, dsteps, asteps = [], [], []
 
+    """ Run ntrials: each loop runs a breadth search, 
+        depth search, and A* search """
     for trials in range(ntrials):
+        # Initialize timer before each search
+        # Create puzzle with costs specific to search type
+        # Run graph search on created puzzle
+        # Add stats to stat arrays
+
         bt = Timer()
         breadthpuzzle = NPuzzle(n, g=BreadthFirst.g, h=BreadthFirst.h)
         bsearch = graph_search(breadthpuzzle, verbose, debug)
@@ -68,9 +78,12 @@ def driver():
         anodes.append(asearch[1])
         atime.append(at.elapsed_s())
 
+    # Merge each stat array into an array for each search
     bdata, ddata, adata = [], [], []
 
+    """ Compile stats and create table """
     if ntrials > 1:
+        # Find mean and standard deviation for each stat of each search
         bdata = [mean(bsteps), stdev(bsteps, mean(bsteps)),
                  mean(bnodes), stdev(bnodes, mean(bnodes)),
                  mean(btime), stdev(btime, mean(btime))]
@@ -83,14 +96,17 @@ def driver():
                  mean(anodes), stdev(anodes, mean(anodes)),
                  mean(atime), stdev(atime, mean(atime))]
 
+        # Combine all data into one list and round as necessary
         data = [bdata, ddata, adata]
         data = [[round(elem, 6) for elem in lis] for lis in data]
 
+        # Create lists for table labels
         searches = ["Breadth Search", "Depth Search", "A* Search"]
         stats = ["Mean Steps", "Std Steps",
                  "Mean Nodes", "Std Nodes",
                  "Mean Time", "Std Time"]
 
+        # Create table using formatted strings and for loop
         i = 0
         row_format = ("{:>14}" * (len(stats) + 1))
         print(row_format.format("", *stats))

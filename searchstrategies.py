@@ -46,18 +46,6 @@ import math
 #        def h(cls, state):
 #               return appropriate h value
 
-# TODO: Implement classes BreadthFirst, DepthFirst, and Manhattan. These are classes that provide implementations for
-#  the cost to node (g) and cost from node to goal heuristic (h) functions. Note g and h are class methods (see
-#  details on class methods in the comments of the provided code) and that when you pass them to the NPuzzle
-#  constructor, you need to pass the function handles to the constructor rather than invoking the function.
-#  Concretely, if you wanted to pass BreadthFirst’s function handle for g to NPuzzle, you would call NPuzzle(
-#  num_tiles, g=BreadthFirst.g, ... ). NPuzzle’s parent class stores g in a publicly accessible instance variable and
-#  other code (e.g. the Node class discussed below) will invoke the functions to evaluate search nodes. Note that we
-#  defined DepthFirst’s g as a constant and h as the negative depth. The structure of the Node implementation expects
-#  h to be called with a single argument: state. As the depth is captured in the Node, and not the state, reverse the
-#  roles of g and h when implementing DepthFirst. The depth can be accessed from the g function which expects a
-#  parent, action, and the search node itself.
-
 class BreadthFirst:
     """BreadthFirst - breadthfirst search"""
 
