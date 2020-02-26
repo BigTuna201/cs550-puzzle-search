@@ -84,7 +84,7 @@ def graph_search(problem, verbose=False, debug=False):
         # Pop next node from frontier priority queue
         node = frontier.pop()
         if debug:
-            print("Node:", node)  # View node for debugging purposes
+            print("Node:", node, "Action", node.action)  # View node for debugging purposes
         # Add current node state to explored set
         state = node.state
         explored.add(state)
@@ -101,10 +101,10 @@ def graph_search(problem, verbose=False, debug=False):
                 if next_node not in frontier:
                     if not explored.exists(next_state):
                         # If not, add to frontier and track the node as expanded
-                        frontier.append(node.child_node(act))
+                        frontier.append(next_node)
                         nodes_expanded += 1
 
-        done = len(frontier.is_empty) <= 0  # Exit loop if frontier is empty
+        done = len(frontier) <= -1  # Exit loop if frontier is empty
 
     if not found:
         print("No solution found.")
