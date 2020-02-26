@@ -38,9 +38,9 @@ class Timer:
 
 def driver():
     # Assign number of trials, size of tileboards, and set verbose / debug flags, and force_states
-    ntrials = 2
+    ntrials = 31
     n = 8
-    verbose, debug = True, False
+    verbose, debug = True, True
 
     f_state = []
 

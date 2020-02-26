@@ -11,23 +11,17 @@ def NewtonRaphson(fpoly, a, tolerance=.00001):
     This is an iterative method that stops when the
     change in estimators is less than tolerance.
 """
-    n = 100  # Set max amount of loops
+    # Calculate b (x-intercept) of line tangent to fpoly
+    # Using approximate value a
+    b = a - polyval(fpoly, a) / polyval(derivative(fpoly), a)
 
-    # Utilize Newton Raphson method n times
-    for i in range(n):
-        # Calculate b (x-intercept) of line tangent to fpoly
-        # Using approximate value a
+    # While the difference between estimators is greater than tolerance
+    # continue to utilize x_n+1 as new estimator
+    while abs(a - b) >= tolerance:
+        a = b
         b = a - polyval(fpoly, a) / polyval(derivative(fpoly), a)
 
-        # If the difference between a and b is less than tolerance, return b
-        if abs(a - b) < tolerance:
-            break
-        elif i == n:
-            raise Exception("No root found")
-        else:
-            # Else, set b as new approximation and continue loop
-            a = b
-
+    # Once tolerance is met, return last estimator
     return b
 
 
@@ -45,9 +39,12 @@ def polyval(fpoly, x):
     returns 548
     """
     val = 0
+    p = 10
+
     # Find sum of each term when plugging in x
     for i, c in enumerate(fpoly, 1):
-        val += c * round(x, 6) ** (len(fpoly) - i)
+        val += c * (x ** (len(fpoly) - i))
+
     return val
 
 
@@ -71,4 +68,5 @@ def derivative(fpoly):
 
 
 if __name__ == '__main__':
-    print(NewtonRaphson([4, 0, 9, 3], 5))
+    print(NewtonRaphson([4, 0, -1], -1))
+    print(NewtonRaphson([4, 0, -1], 1))
