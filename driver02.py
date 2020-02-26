@@ -83,13 +83,13 @@ def driver():
         # bsteps.append(len(bsearch[0]))
         # bnodes.append(bsearch[1])
         # btime.append(bt.elapsed_s())
-        #
-        # dt = Timer()
-        # depthpuzzle = NPuzzle(n, force_state=state, g=DepthFirst.h, h=DepthFirst.g)
-        # dsearch = graph_search(depthpuzzle, verbose, debug)
-        # dsteps.append(len(dsearch[0]))
-        # dnodes.append(dsearch[1])
-        # dtime.append(dt.elapsed_s())
+
+        dt = Timer()
+        depthpuzzle = NPuzzle(n, force_state=state, g=DepthFirst.h, h=DepthFirst.g)
+        dsearch = graph_search(depthpuzzle, verbose, debug)
+        dsteps.append(len(dsearch[0]))
+        dnodes.append(dsearch[1])
+        dtime.append(dt.elapsed_s())
 
         at = Timer()
         astarpuzzle = NPuzzle(n, force_state=state, g=Manhattan.g, h=Manhattan.h)
